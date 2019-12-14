@@ -12,6 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
+// import Cart from "./components/Cart/ShoppingInBasket";
 import "./App.css";
 
 const useStyles = makeStyles(theme => ({
@@ -114,6 +115,8 @@ const App = () => {
               />
             </div>
             <IconButton
+              component={NavLink}
+              to="Cart"
               className={classes.btnMargin}
               color="inherit"
               aria-label="add to shopping cart"
