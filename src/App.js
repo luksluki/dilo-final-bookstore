@@ -9,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
-import { BrowserRouter, Route, Link, NavLink, Switch } from "react-router-dom";
+import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
 import "./App.css";
@@ -73,6 +73,13 @@ const useStyles = makeStyles(theme => ({
 const App = () => {
   const [data, setData] = useState(null);
   const classes = useStyles();
+
+  useEffect(() => {
+    const userData = window.localStorage.getItem("userData")
+      ? setData(JSON.parse(window.localStorage.getItem("userData")))
+      : null;
+  }, []);
+
   return (
     <BrowserRouter>
       <div className={classes.root}>
@@ -113,23 +120,96 @@ const App = () => {
             >
               <AddShoppingCartIcon />
             </IconButton>
-            <Button
-              component={NavLink}
-              to="/login"
-              className={classes.btnMargin}
-              color="inherit"
-            >
-              Log In / Sign Up
-            </Button>
+            {data ? (
+              <Button
+                component={NavLink}
+                to="/login"
+                className={classes.btnMargin}
+                color="inherit"
+              >
+                Log In / Sign Up
+              </Button>
+            ) : (
+              <Button
+                component={NavLink}
+                to="/logout"
+                className={classes.btnMargin}
+                color="inherit"
+              >
+                Log Out
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact={true} component={Home} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>
     </BrowserRouter>
   );
 };
+
+// const App = () => {
+//   const [data, setData] = useState(null);
+//   const classes = useStyles();
+//   return (
+//     <BrowserRouter>
+//       <div className={classes.root}>
+//         <AppBar position="static">
+//           <Toolbar>
+//             <IconButton
+//               edge="start"
+//               className={classes.menuButton}
+//               color="inherit"
+//               aria-label="open drawer"
+//             >
+//               <MenuIcon />
+//             </IconButton>
+
+//             <Typography className={classes.title} variant="h6" noWrap>
+//               <div component={NavLink} to="/" color="inherit">
+//                 Bookstore
+//               </div>
+//             </Typography>
+
+//             <div className={classes.search}>
+//               <div className={classes.searchIcon}>
+//                 <SearchIcon />
+//               </div>
+//               <InputBase
+//                 placeholder="Search…"
+//                 classes={{
+//                   root: classes.inputRoot,
+//                   input: classes.inputInput
+//                 }}
+//                 inputProps={{ "aria-label": "search" }}
+//               />
+//             </div>
+//             <IconButton
+//               className={classes.btnMargin}
+//               color="inherit"
+//               aria-label="add to shopping cart"
+//             >
+//               <AddShoppingCartIcon />
+//             </IconButton>
+//             <Button
+//               component={NavLink}
+//               to="/login"
+//               className={classes.btnMargin}
+//               color="inherit"
+//             >
+//               Log In / Sign Up
+//             </Button>
+//           </Toolbar>
+//         </AppBar>
+//         <Switch>
+//           <Route path="/" exact component={Home} />
+//           <Route path="/login" component={Login} />
+//         </Switch>
+//       </div>
+//     </BrowserRouter>
+//   );
+// };
 
 export default App;
