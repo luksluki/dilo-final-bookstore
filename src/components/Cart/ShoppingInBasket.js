@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 
 import ItemInBasket from "./ItemInBasket";
-import "../Cart/ItemInBasket.css";
+import "./ItemInBasket.css";
 
 const ShoppingBasket = ({ selectedBooks, booksList, addNewOrder }) => {
   const msg = (
@@ -13,7 +13,7 @@ const ShoppingBasket = ({ selectedBooks, booksList, addNewOrder }) => {
 
   const booksInBasket = Object.keys(selectedBooks);
 
-  const renderOrder = function(key) {
+  const renderOrder = function (key) {
     const book = booksList[key];
     const count = selectedBooks[key];
 

@@ -58,7 +58,6 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
-    console.log('masuk')
     const request = await axios.post('http://localhost:3000/users/login', {
       email,
       password,
@@ -119,7 +118,7 @@ export default function Login() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

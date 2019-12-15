@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 
-import "../../css/components/ItemInBasket.css";
+import "./ItemInBasket.css";
 
 const ItemInBasket = ({ name, count, price }) => {
   return (

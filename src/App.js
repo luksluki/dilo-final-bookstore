@@ -13,6 +13,7 @@ import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
 import Logout from "./components/Auth/Logout";
+import Register from "./components/Auth/Register";
 import HomeIcon from "@material-ui/icons/Home";
 // import Cart from "./components/Cart/ShoppingInBasket";
 import Admin from "./components/Admin/Admin";
@@ -84,6 +85,12 @@ const App = () => {
       : null
   }, [])
 
+  // const WrapperCart = () => {
+  //   return (
+  //     <Cart selectedBooks={this.state.selectedBooks} booksList={this.state.books} addNewOrder={this.addNewOrder} />
+  //   );
+  // }
+
   return (
     <BrowserRouter>
       <div className={classes.root}>
@@ -153,7 +160,9 @@ const App = () => {
           <Route path="/" exact={true} component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
+          <Route path="/register" component={Register} />
           <Route path="/admin" component={Admin} />
+          {/* <Route path="/cart" component={WrapperCart} /> */}
         </Switch>
       </div>
     </BrowserRouter>
