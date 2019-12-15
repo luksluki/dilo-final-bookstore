@@ -58,6 +58,7 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
+    console.log('masuk')
     const request = await axios.post('http://localhost:3000/users/login', {
       email,
       password,
@@ -65,6 +66,10 @@ export default function Login() {
     window.localStorage.setItem('userData', JSON.stringify(request.data))
     redirect()
   }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -76,7 +81,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -87,6 +92,7 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={e => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -98,6 +104,7 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
           />
 
           <Button
@@ -122,6 +129,6 @@ export default function Login() {
       <Box mt={8}>
         <Copyright />
       </Box>
-    </Container>
+    </Container >
   );
 }
