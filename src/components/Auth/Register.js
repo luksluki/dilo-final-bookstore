@@ -51,13 +51,13 @@ const useStyles = makeStyles(theme => ({
 export default function SignUp() {
     const classes = useStyles();
     const [name, setName] = useState('')
-    const [role, setRole] = useState('')
+    // const [role, setRole] = useState('')
+    const role = 'user';
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault();
-        setRole('user')
     };
 
     const redirect = () => {
@@ -65,7 +65,7 @@ export default function SignUp() {
     }
 
     const handleLogin = async () => {
-        console.log('masuk')
+        console.log(role)
         const request = await axios.post('http://localhost:3000/users', {
             name,
             email,
@@ -99,21 +99,6 @@ export default function SignUp() {
                                 label="Full Name"
                                 autoFocus
                                 onChange={e => setName(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} hidden>
-                            <TextField
-                                hiddenLabel={true}
-                                autoComplete="role"
-                                name="role"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                value="user"
-                                id="role"
-                                label="Role"
-                                autoFocus
-                                onChange={e => setRole(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12}>
