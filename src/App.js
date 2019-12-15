@@ -12,6 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
+import HomeIcon from "@material-ui/icons/Home";
 // import Cart from "./components/Cart/ShoppingInBasket";
 import "./App.css";
 
@@ -87,12 +88,14 @@ const App = () => {
         <AppBar position="static">
           <Toolbar>
             <IconButton
+              component={NavLink}
+              to="/"
               edge="start"
               className={classes.menuButton}
               color="inherit"
               aria-label="open drawer"
             >
-              <MenuIcon />
+              <HomeIcon />
             </IconButton>
 
             <Typography className={classes.title} variant="h6" noWrap>
