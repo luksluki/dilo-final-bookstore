@@ -4,6 +4,9 @@ import AddBook from "./Books/AddBook";
 import Search from "./Books/Search";
 import BookList from "./Books/BooksList";
 import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 // import Paper from "@material-ui/core/Paper";
 // import Grid from "@material-ui/core/Grid";
 // import Card from "@material-ui/core/Card";
@@ -70,12 +73,17 @@ const Home = () => {
   // });
 
   return (
-    <div>
-      <h3>Total Book : {filteredBooks.length}</h3>
-      <Search onSearch={onSearchBook} />
-      <BookList books={filteredBooks} onDelete={onDelete} onMark={onMark} />
-      <AddBook onAdd={onAddBook} />
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <Container fixed style={{ padding: 20 }}>
+        <Typography component="div" style={{ height: "100vh" }}>
+          <h3>Total Book : {filteredBooks.length}</h3>
+          {/* <Search onSearch={onSearchBook} /> */}
+          <BookList books={filteredBooks} onDelete={onDelete} onMark={onMark} />
+          {/* <AddBook onAdd={onAddBook} /> */}
+        </Typography>
+      </Container>
+    </React.Fragment>
   );
 };
 
