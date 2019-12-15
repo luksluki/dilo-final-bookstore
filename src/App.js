@@ -12,7 +12,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login";
+import Logout from "./components/Auth/Logout";
 // import Cart from "./components/Cart/ShoppingInBasket";
+import Admin from "./components/Admin/Admin";
 import "./App.css";
 
 const useStyles = makeStyles(theme => ({
@@ -72,14 +74,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const App = () => {
-  const [data, setData] = useState(null);
   const classes = useStyles();
+  const [data, setData] = useState(null)
 
   useEffect(() => {
-    const userData = window.localStorage.getItem("userData")
-      ? setData(JSON.parse(window.localStorage.getItem("userData")))
-      : null;
-  }, []);
+    const userData = window.localStorage.getItem('userData')
+      ? setData(JSON.parse(window.localStorage.getItem('userData')))
+      : null
+  }, [])
 
   return (
     <BrowserRouter>
@@ -126,27 +128,29 @@ const App = () => {
             {data ? (
               <Button
                 component={NavLink}
-                to="/login"
-                className={classes.btnMargin}
-                color="inherit"
-              >
-                Log In / Sign Up
-              </Button>
-            ) : (
-              <Button
-                component={NavLink}
                 to="/logout"
                 className={classes.btnMargin}
                 color="inherit"
               >
                 Log Out
               </Button>
-            )}
+            ) : (
+                <Button
+                  component={NavLink}
+                  to="/login"
+                  className={classes.btnMargin}
+                  color="inherit"
+                >
+                  Log In / Sign Up
+              </Button>
+              )}
           </Toolbar>
         </AppBar>
         <Switch>
           <Route path="/" exact={true} component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/admin" component={Admin} />
         </Switch>
       </div>
     </BrowserRouter>

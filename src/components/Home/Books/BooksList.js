@@ -16,7 +16,7 @@ const BookList = props => {
     <div>
       {books.map((book, index) => (
         <div key={index}>
-          <Book title={book.title} completed={book.completed} />
+          <Book title={book.title} author={book.author} description={book.description} />
           <div>
             {!book.completed && (
               <button onClick={() => markBook(book._id)}>&#10003;</button>
